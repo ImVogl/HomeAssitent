@@ -1,0 +1,1 @@
+sudo g++ -I/home/vogl/Libraries/DLib -I/home/vogl/Libraries/OpenCV -L/home/vogl/Libraries/DLib/build/Release -ldlib -lX11 -lpthread -lboost_filesystem -lboost_system -std=c++17 "../src/dlib_service.cpp" "../src/file_service.cpp" "../src/main.cpp" /home/vogl/Libraries/DLib/dlib/all/source.cpp -o DlibTest
