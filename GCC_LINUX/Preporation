@@ -1,0 +1,6 @@
+Installing DLib: http://dlib.net/
+Installing open cv: https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html
+Installing directX: sudo apt-get install libX11-dev
+Installing boost: sudo apt-get install libboost-all-dev
+Installing POSIX: sudo apt-get install libc6-dev libncursesw5-dev
+Installing JPEG: sudo apt-get install libjpeg-dev
