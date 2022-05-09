@@ -1,42 +1,15 @@
-// #define SHOW_IMAGE
-#include "file_service.h"
-#include "dlib_service.h"
-#include "face_recognition_metric.h"
-
-#include <iostream>
-#include <filesystem>
-
-using namespace dlib;
-using namespace std;
-namespace fs = std::experimental::filesystem;
+#include "test_service.h"
 
 // http://dlib.net/webcam_face_pose_ex.cpp.html
 int main(int argc, char** argv)
 {
-	if (argc < 3)
-	{
-		cout << "Give the path to directory with images." << endl;
-		return 0;
-	}
-
-	frontal_face_detector detector = get_frontal_face_detector();
 #ifdef SHOW_IMAGE
-	image_window win;
-#else
-	const auto result_path = fs::path(argv[1]);
-	const auto images_extension = argv[2];
+	auto live_service = new run_test_for_ip_camera("192.168.1.236:554");
+	live_service->run();
 #endif
 
-	std::vector<FaceRecognitionMetric> results = {};
-	auto dlib_service = new DLibService();
-	auto file_service = new FileService();
-	auto images = file_service->get_all_images(result_path, images_extension);
-	for (std::vector<fs::path>::const_iterator iterator = images.begin(); iterator != images.end(); ++iterator)
-	#ifdef SHOW_IMAGE
-		dlib_service->recognize_faces(detector, win, *iterator);
-	#else
-		results.push_back(dlib_service->recognize_faces(detector, *iterator));
-	#endif
+	auto prepared_service = new run_test_for_prepared_images(argc, argv);
+	prepared_service->run();
 
-	file_service->save_results_csv(results, result_path);
+	return 0;
 }

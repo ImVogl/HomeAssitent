@@ -30,6 +30,14 @@ public:
 	/// <param name="win"><see cref="image_window"/>.</param>
 	/// <param name="path">Путь до обрабатываемого файла.</param>
 	void recognize_faces(frontal_face_detector& detector, image_window& win, const fs::path& path);
+
+	/// <summary>
+	/// Распознание лиц с выводом результатов на экран.
+	/// </summary>
+	/// <param name="detector"><see cref="frontal_face_detector"/>.</param>
+	/// <param name="win"><see cref="image_window"/>.</param>
+	/// <param name="image">Изображение.</param>
+	void recognize_faces(frontal_face_detector& detector, image_window& win, array2d<unsigned char> image);
 };
 
 #endif

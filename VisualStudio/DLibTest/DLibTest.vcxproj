@@ -72,15 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>I:\Libraries\dlib\build;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>I:\Libraries\opencv\include;I:\Libraries\dlib\include;$(IncludePath)</IncludePath>
+    <LibraryPath>I:\Libraries\dlib\build;I:\Libraries\opencv\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>I:\Libraries\dlib\build;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>I:\Libraries\opencv\include;I:\Libraries\dlib\include;$(IncludePath)</IncludePath>
+    <LibraryPath>I:\Libraries\dlib\build;I:\Libraries\opencv\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -116,7 +124,11 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>I:\Libraries\dlib\build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dlib19.22.0_debug_64bit_msvc1916.lib;opencv_world455d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "..\..\..\..\Libraries\opencv\x64\vc15\bin" "$(OutDir)" /h /i /c /k /e /r /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -154,18 +166,24 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>dlib19.22.0_release_64bit_msvc1916.lib;opencv_world455.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "..\..\..\..\Libraries\opencv\x64\vc15\bin" "$(OutDir)" /h /i /c /k /e /r /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Libraries\dlib\all\source.cpp" />
+    <ClCompile Include="..\..\..\..\Libraries\dlib\include\dlib\all\source.cpp" />
     <ClCompile Include="dlib_service.cpp" />
     <ClCompile Include="file_service.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="test_service.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dlib_service.h" />
     <ClInclude Include="face_recognition_metric.h" />
     <ClInclude Include="file_service.h" />
+    <ClInclude Include="test_service.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,13 @@
+#!bin/bash
+
+path_to_executable = /home/pi/Documents/Repository/HomeAssistent/GCC_LINUX/Build/DlibTest
+path_to_dataset_base = '/home/pi/Documents/DataSet/HomeAssistent'
+extension = '.jpg'
+start_time = $(date +%s)
+echo ''
+path_to_executable
+end_time=$(date +%s)
+
+# elapsed time with second resolution
+elapsed=$(( end_time - start_time ))
+echo $elapsed
