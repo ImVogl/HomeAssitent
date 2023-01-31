@@ -1,21 +1,23 @@
 ﻿#pragma once
 
-#define SHOW_IMAGE
+// #define SHOW_IMAGE
 #include <string>
-#include <chrono>
 
-// Тестовый класс запуска проверки службы.
-class test_service
+// Класс запуска проверки службы.
+class recognize_service
 {
 public:
 	// Запуск теста
 	void virtual run() {};
 
 	// Деструктор
-	virtual ~test_service() = default;
+	virtual ~recognize_service() = default;
 };
 
-class run_test_for_prepared_images : test_service
+/// <summary>
+/// Класс для работы с готовыми изображениями.
+/// </summary>
+class recognize_service_for_prepared_images : recognize_service
 {
 private:
 	// Число аргументов
@@ -30,7 +32,7 @@ public:
 	/// </summary>
 	/// <param name="argc">Число аргументов.</param>
 	/// <param name="argv">Аргументы.</param>
-	explicit run_test_for_prepared_images(const int argc, char** argv)
+	explicit recognize_service_for_prepared_images(const int argc, char** argv)
 	{
 		_argc = argc;
 		_argv = argv;
@@ -39,7 +41,10 @@ public:
 	void run() override;
 };
 
-class run_test_for_ip_camera : test_service
+/// <summary>
+/// Конструктор.
+/// </summary>
+class recognize_service_for_ip_camera_images : recognize_service
 {
 private:
 	// Сокет камеры.
@@ -50,7 +55,7 @@ public:
 	/// Конструктор.
 	/// </summary>
 	/// <param name="camera_socket">Сокет камеры.</param>
-	explicit run_test_for_ip_camera(std::string camera_socket)
+	explicit recognize_service_for_ip_camera_images(std::string camera_socket)
 	{
 		_camera_socket = camera_socket;
 	}

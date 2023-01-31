@@ -177,13 +177,14 @@
     <ClCompile Include="dlib_service.cpp" />
     <ClCompile Include="file_service.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="test_service.cpp" />
+    <ClCompile Include="recognize_service_for_ip_camera_images.cpp" />
+    <ClCompile Include="recognize_service_for_prepared_images.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dlib_service.h" />
     <ClInclude Include="face_recognition_metric.h" />
     <ClInclude Include="file_service.h" />
-    <ClInclude Include="test_service.h" />
+    <ClInclude Include="recognize_service.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

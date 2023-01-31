@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\RecognizeService">
+      <UniqueIdentifier>{2e0dbac5-cf13-4991-b0f4-294c5bbe69fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dlib_service.cpp">
@@ -24,11 +27,14 @@
     <ClCompile Include="file_service.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test_service.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\Libraries\dlib\include\dlib\all\source.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="recognize_service_for_prepared_images.cpp">
+      <Filter>Source Files\RecognizeService</Filter>
+    </ClCompile>
+    <ClCompile Include="recognize_service_for_ip_camera_images.cpp">
+      <Filter>Source Files\RecognizeService</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -41,7 +47,7 @@
     <ClInclude Include="file_service.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="test_service.h">
+    <ClInclude Include="recognize_service.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
