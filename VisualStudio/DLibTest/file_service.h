@@ -10,6 +10,7 @@ namespace fs = std::experimental::filesystem;
 class FileService
 {
 public:
+
 	/// <summary>
 	/// Получает коллекцию всех изображений.
 	/// </summary>

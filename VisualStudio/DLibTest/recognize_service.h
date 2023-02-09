@@ -47,8 +47,12 @@ public:
 class recognize_service_for_ip_camera_images : recognize_service
 {
 private:
+
+	// Число кадров, после которого производится сохранение обнаруженных лиц.
+	const int frames_count_ = 30;
+
 	// Сокет камеры.
-	std::string _camera_socket;
+	std::string camera_socket_;
 
 public:
 	/// <summary>
@@ -57,7 +61,7 @@ public:
 	/// <param name="camera_socket">Сокет камеры.</param>
 	explicit recognize_service_for_ip_camera_images(std::string camera_socket)
 	{
-		_camera_socket = camera_socket;
+		camera_socket_ = camera_socket;
 	}
 
 	void run() override;

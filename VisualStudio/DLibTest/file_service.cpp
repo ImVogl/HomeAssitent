@@ -18,7 +18,6 @@ std::vector<fs::path> FileService::get_all_images(fs::path source_path, std::str
 	return images;
 }
 
-
 /// <inheritdoc />
 void FileService::save_results_csv(std::vector<FaceRecognitionMetric> results, const fs::path& output_dir_path)
 {

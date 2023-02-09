@@ -14,7 +14,7 @@ using namespace dlib;
 // Реализация для случая работающей камеры.
 void recognize_service_for_ip_camera_images::run()
 {
-	const auto rtsp_url = "rtsp://" + _camera_socket + "/user=admin_password=tlJwpbo6_channel=0_stream=0.sdp?real_stream";
+	const auto rtsp_url = "rtsp://" + camera_socket_ + "/user=admin_password=tlJwpbo6_channel=0_stream=0.sdp?real_stream";
 	cv::VideoCapture capture(rtsp_url);
 	if (!capture.isOpened())
 	{
@@ -25,7 +25,8 @@ void recognize_service_for_ip_camera_images::run()
 	image_window win;
 	cv::Mat frame;
 	cv::Mat normalize_image;
-	auto dlib_service = DLibService(false);
+	auto frame_count = 0;
+	auto dlib_service = new DLibService(false);
 	auto detector = get_frontal_face_detector();
 	while (!win.is_closed())
 	{
@@ -39,6 +40,11 @@ void recognize_service_for_ip_camera_images::run()
 		auto converted_image = dlib::cv_image<bgr_pixel>(normalize_image);
 		array2d<unsigned char> dlib_frame;
 		assign_image(dlib_frame, converted_image);
-		dlib_service.recognize_faces(detector, win, std::move(dlib_frame));
+		dlib_service->recognize_faces(detector, win, std::move(dlib_frame));
+		++frame_count;
+		if (frame_count % frames_count_ == 0)
+		{
+			auto recognized_faces = dlib_service->get_stored_faces();
+		}
 	}
 }

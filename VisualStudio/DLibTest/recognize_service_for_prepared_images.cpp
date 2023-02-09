@@ -24,7 +24,7 @@ void recognize_service_for_prepared_images::run()
 #endif
 
 	std::vector<FaceRecognitionMetric> results = {};
-	auto dlib_service = DLibService(true);
+	auto dlib_service = new DLibService(true);
 	auto file_service = FileService();
 
 	const auto result_path = fs::path(_argv[1]);
@@ -32,10 +32,12 @@ void recognize_service_for_prepared_images::run()
 	auto images = file_service.get_all_images(result_path, images_extension);
 	for (std::vector<fs::path>::const_iterator iterator = images.begin(); iterator != images.end(); ++iterator)
 #ifdef SHOW_IMAGE
-		dlib_service.recognize_faces(detector, win, *iterator);
+		dlib_service->recognize_faces(detector, win, *iterator);
 #else
-		results.push_back(dlib_service.recognize_faces(detector, *iterator));
+		results.push_back(dlib_service->recognize_faces(detector, *iterator));
+	
+	file_service.save_results_csv(results, result_path);
 #endif
 
-	file_service.save_results_csv(results, result_path);
+	auto recognized_faces = dlib_service->get_stored_faces();
 }

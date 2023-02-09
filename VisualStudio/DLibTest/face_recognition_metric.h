@@ -4,7 +4,6 @@
 #include <string>
 #include <opencv2/core/types.hpp>
 
-
 /// <summary>
 /// Структура с результатами обработки изображения.
 /// </summary>

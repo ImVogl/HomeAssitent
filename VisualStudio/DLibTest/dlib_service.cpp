@@ -122,5 +122,18 @@ void DLibService::store_sub_image(const fs::path& path, rectangle sub_image_bord
 
 	const auto cv_rect = cv::Rect(left, top, right - left, bottom - top);
 	auto face = image(cv_rect);
+
+	lock_guard<std::mutex> lock(faces_mutex_);
 	this->collected_faces_.push_back(std::move(face));
+}
+
+/// <inheritdoc />
+std::vector<cv::Mat> DLibService::get_stored_faces()
+{
+	lock_guard<std::mutex> lock(faces_mutex_);
+	std::vector<cv::Mat> local_collection;
+	local_collection.swap(this->collected_faces_);
+	this->collected_faces_.clear();
+
+	return local_collection;
 }

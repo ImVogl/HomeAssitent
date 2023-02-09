@@ -4,8 +4,4 @@
     <LocalDebuggerCommandArguments>"I:\Python_projects\LodgersRecognition\DataSet" ".jpg"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>"I:\Python_projects\LodgersRecognition\DataSet" ".jpg"</LocalDebuggerCommandArguments>
-    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-  </PropertyGroup>
 </Project>

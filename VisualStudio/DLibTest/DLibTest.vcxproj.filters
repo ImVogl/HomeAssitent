@@ -36,6 +36,9 @@
     <ClCompile Include="recognize_service_for_ip_camera_images.cpp">
       <Filter>Source Files\RecognizeService</Filter>
     </ClCompile>
+    <ClCompile Include="messages_broker_service.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dlib_service.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="recognize_service.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="messages_broker_service.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

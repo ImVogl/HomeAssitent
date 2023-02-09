@@ -18,6 +18,11 @@ class DLibService
 private:
 
 	/// <summary>
+	/// Мютекс доступа к коллекции сохраненных изображений.
+	/// </summary>
+	std::mutex faces_mutex_;
+
+	/// <summary>
 	/// Значение, показывающее, что нужно хранить полученные изображения.
 	/// </summary>
 	bool collect_faces_;
@@ -70,6 +75,12 @@ public:
 	/// <param name="win"><see cref="image_window"/>.</param>
 	/// <param name="image">Изображение.</param>
 	void recognize_faces(frontal_face_detector& detector, image_window& win, array2d<unsigned char> image);
+
+	/// <summary>
+	/// Получение сохраненных изображений..
+	/// </summary>
+	/// <returns>Вектор с лицами.</returns>
+	std::vector<cv::Mat> get_stored_faces();
 };
 
 #endif
